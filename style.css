@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* All */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #7dcf0e;
+
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: url("img/bg.png") no-repeat fixed 30%;
+}
+
+form[name="input"], .solution, .answer {
+  padding: 10px 20px;
+  margin-bottom: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 0 5px #7c7c7c;
+  border-radius: 20px;
+
+  background-color: #fff;
+}
+
+p {
+  font-weight: 600;
+  font-size: 16px;
+
+  margin-bottom: 8px;
+}
+
+input {
+  outline: none;
+  background: transparent;
+  border: 0;
+  padding: 5px;
+
+  width: 100%;
+
+  font-size: 16px;
+  text-align: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+table {
+  margin-bottom: 8px;
+}
+
+table tr:not(.table__client, .table__potential) td:not(.table__provider, .table__potential) {
+  background-color: #5d5;
+}
+
+table tr td:not(.table__client) {
+  background-color: #40c04d;
+}
+
+table tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+
+table tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+
+table tr:first-child th {
+  padding: 0 20px;
+  background-color: #40c04d;
+}
+
+table .table__provider, .table__potential th {
+  background: linear-gradient(45deg, rgba(95,216,56,1) 25%, rgba(64,192,77,1) 75%);
+}
+
+table tr:last-child th:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.table__client {
+  background-color: #40c04d;
+}
+
+td {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+}
+
+th, td input {
+  color: #fff;
+}
+
+th input {
+  color: #fff;
+  font-weight: 700;
+}
+
+th, td {
+  width: 60px;
+  height: 30px;
+}
+
+button {
+  border: 0;
+}
+
+/* Header */
+
+header {
+  height: 80px;
+  width: 100%;
+  background-color: #40c04d;
+  margin-bottom: 12px;
+  padding-left: 36px;
+
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* Container */
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 0 20px;
+}
+
+.container > div {
+  align-items: center;
+}
+
+/* Input */
+
+.subtitle {
+  text-align: center;
+
+  margin-bottom: 10px;
+}
+
+/* Input Table */
+
+.table__size input {
+  width: 40px;
+  height: 20px;
+
+  background-color: #f0f0ed;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #7dcf0e;
+
+  transition: all 0.2s;
+}
+
+.table__size input:focus {
+  box-shadow: 0px 0px 2px #7dcf0e;
+
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+.table__input {
+  align-self: center;
+}
+
+/* Input Buttons */
+
+.buttons {
+  align-self: center;
+
+  margin-bottom: 8px;
+}
+
+.buttons button {
+  background-color: #f0f0ed;
+  width: 100px;
+  padding: 5px 0;
+
+  font-weight: 500;
+  font-size: 16px;
+
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #7dcf0e;
+
+  transition: all 0.2s;
+}
+
+.buttons button:first-child {
+  margin-right: 8px;
+}
+
+.buttons button:hover {
+  cursor: pointer;
+}
+
+.buttons button:active {
+  box-shadow: 0px 0px 2px #7dcf0e;
+
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+/* Solution */
+
+.hidden {
+  display: none;
+}
+
+.solution > div {
+  position: relative;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+
+  text-transform: uppercase;
+  color: #bfbfbf;
+}
+
+/* Iteration */
+
+.table__inner {
+  margin-bottom: 0;
+  border-collapse: collapse;
+}
+
+.iteration > div, .answer > div {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+canvas {
+  position: absolute;
+}
+
+/* Inner Table */
+
+.expanded .table__inner tr:last-child td:last-child {
+  border-radius: 0;
+}
+
+table tr:not(.table__client, .table__potential) td:not(.table__provider, .table__potential) .highlight {
+  background-color: #ff7d7d;
+}
