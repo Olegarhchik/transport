@@ -360,7 +360,7 @@ class Solution extends Algorithm {
   }
 
   drawCycle(cells) {
-    let div = document.querySelector('.iteration:last-child').lastChild;
+    let div = document.querySelector('.carouselle:last-child .iteration').lastChild;
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
 
@@ -565,15 +565,16 @@ class Solution extends Algorithm {
 
   generateBlock(obj) {
     let solution = document.querySelector('.solution');
-    let content = document.querySelector('.iteration:last-child');
+    let carouselle = document.querySelector('.carouselle:last-child');
+    let iteration = document.querySelector('.carouselle:last-child .iteration');
 
     let div = document.createElement('div');
     div.classList.add(obj.type);
 
     if (obj.last) {
-      content = document.createElement('div');
-      content.classList.add('answer');
-      document.querySelector('.container').append(content);
+      iteration = document.createElement('div');
+      iteration.classList.add('answer');
+      document.querySelector('.container').append(iteration);
     }
 
     let subtitle = document.createElement('h2');
@@ -594,14 +595,22 @@ class Solution extends Algorithm {
     }
 
     if ((obj.type == 'model' || obj.type == 'plan') && !obj.last) {
-      content = document.createElement('div');
-      content.classList.add('iteration');
+      iteration = document.createElement('div');
+      iteration.classList.add('iteration');
+      carouselle = document.createElement('div');
+      carouselle.classList.add('carouselle');
 
-      solution.append(content);
-      this.numberBlock(content);
+      if (obj.type == 'plan') {
+        this.addArrow(carouselle, 'left');
+        this.addArrow(carouselle, 'right');
+      }
+
+      carouselle.append(iteration);
+      solution.append(carouselle);
+      this.numberBlock(carouselle);
     }
 
-    content.append(div);
+    iteration.append(div);
     this.fillTable(table, obj);
   }
 
@@ -639,9 +648,28 @@ class Solution extends Algorithm {
     table.drawTable = generateTable(this.m, this.n, table.expanded);
 
     if (table.num >= 4)
-      table.drawTable = document.querySelector('.iteration:last-child').lastChild.querySelector('table').cloneNode(true);
+      table.drawTable = document.querySelector('.carouselle:last-child .iteration').lastChild.querySelector('table').cloneNode(true);
 
     return table;
+  }
+
+  addArrow(div, direction) {
+    let arrow = document.createElement('span');
+    arrow.classList.add('arrow');
+    arrow.classList.add(direction);
+
+    let img = document.createElement('img');
+    img.setAttribute('src', 'img/arrow.svg');
+    arrow.append(img);
+
+    div.prepend(arrow);
+
+    arrow.addEventListener('click', () => {
+      let iteration = arrow.parentElement.lastChild;
+      let width = iteration.offsetWidth;
+
+      iteration.scrollLeft += (direction == 'left') ? -width : width;
+    })
   }
 }
 
@@ -708,6 +736,7 @@ solveButton.addEventListener('click', () => {
 let inputTable = document.querySelector('.table__input');
 let tableSize = document.querySelector('.table__size');
 let resetButton = document.querySelector('button[type="reset"]');
+let arrowButtons = document.querySelector('.arrow');
 
 // Валидация ввода
 
